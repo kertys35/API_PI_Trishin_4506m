@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from translate import Translator
+from deep_translator import GoogleTranslator as Translator
 from transformers import pipeline
 from pydantic import BaseModel
 
@@ -11,7 +11,7 @@ app = FastAPI()
 
 async def classify_text(text):
     classifier = pipeline("sentiment-analysis", model="kertys/yelp_review_classifier")
-    translator= Translator(from_lang="russian", to_lang="english")
+    translator= Translator(source='russian', target='english')
     translation = translator.translate(text)
     return classifier(translation)
 
