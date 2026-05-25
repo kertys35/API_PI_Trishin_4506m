@@ -9,9 +9,6 @@ class UserRequest(BaseModel):
 
 app = FastAPI()
 
-translator= Translator(from_lang="russian", to_lang="english")
-
-
 async def classify_text(text):
     classifier = pipeline("sentiment-analysis", model="kertys/yelp_review_classifier")
     translator= Translator(from_lang="russian", to_lang="english")
